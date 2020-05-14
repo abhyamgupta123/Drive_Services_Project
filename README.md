@@ -32,6 +32,8 @@ Doing this will create a `.credentials` folder in your working directory. This c
 
 > if working with linux systems then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden by default as it contains "." before it's name.
 
+<br>
+
 ### Using Script
 You just need to run `main.py` file by using python-2. This will show all the further options.<br>
 
