@@ -12,3 +12,22 @@ basic tools in this pakage includes:
   <li> Searching of file by it's size and query </li>
   <li> Getting list of files or folder by their size </li>
   <li> Downloading any file or folder inly by it's name to your local path </li>
+  
+## Instruction
+
+-> First enable the Drive API to use the API function in your acoount.
+-> Head over to <a href="https://developers.google.com/drive/api/v3/quickstart/python">Python Quickstart</a> and enable the
+   Drive API by instructions given overthere.
+-> Download the `credentials.json` in your working directory.
+
+<b>Now start using the tools by running `main.py`.</b>
+
+For the first time you run the script it wil ask for permission of using Drive features. Just grant all the needed
+permission.
+Doing this will create a `.credentials` folder in your working directory. This contains all the information for associated with your current acoount of which you have gven the permission.
+<i>
+If you want to change the current Google ID to another just delete this `credentials` folder and `credentials.json` file. and paste the `credentials.json` file of another Google ID which you want.
+</i>
+
+
+
