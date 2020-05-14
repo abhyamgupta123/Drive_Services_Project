@@ -28,7 +28,7 @@ permission.<br>
 Doing this will create a `.credentials` folder in your working directory. This contains all the information associated with your current working acoount of which you have given the permission after running `main.py`.<br>
 <br>
 
-*If you want to change the current Google ID to another just delete this `.credentials` folder and `credentials.json` file. and paste the `credentials.json` file of another Google ID which you want.*<br><br>
+*If you want to change the current Google ID to another, just delete `.credentials` folder and `credentials.json` file. and paste the new `credentials.json` file of another Google ID which you want.*<br><br>
 
 > if working with linux systems then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden by default as it contains "." before it's name.
 
