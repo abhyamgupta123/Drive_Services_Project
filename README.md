@@ -23,7 +23,7 @@ basic tools in this pakage includes:
 **Now start using the tools by running `main.py`.**<br><br>
 
 For the first time you run the script it wil ask for permission of using Drive features. Just grant all the needed
-permission.<br><br>
+permission.<br>
 
 Doing this will create a `.credentials` folder in your working directory. This contains all the information associated with your current working acoount of which you have given the permission after running `main.py`.<br>
 <br>
