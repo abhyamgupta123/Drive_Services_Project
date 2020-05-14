@@ -32,10 +32,9 @@ Doing this will create a `.credentials` folder in your working directory. This c
 If you want to change the current Google ID to another just delete this `.credentials` folder and `credentials.json` file. and paste the `credentials.json` file of another Google ID which you want.
 </i><br>
 
---> if working with linux systems then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden       
-    by default as it contains "." before it's name.
+--> if working with linux systems then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden &nbsp &nbsp by default as it contains "." before it's name.
 
-#### Using Script
+### Using Script
 You just need to run `main.py` file by using python-2. This will show all the further options.<br>
 
 ```
