@@ -32,9 +32,8 @@ Doing this will create a `.credentials` folder in your working directory. This c
 If you want to change the current Google ID to another just delete this `.credentials` folder and `credentials.json` file. and paste the `credentials.json` file of another Google ID which you want.
 </i><br>
 
-<ul style="list-style-type:disc;">
-  <li> if using linux then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden by default as 
-       it contains .before it's name</li> 
-</ul>
-
+<p style="font-size:50%;">
+if working with linux systems then press `ctrl + H` this will unhide the hidden `.credentials` folder which is hidden by
+default as it contains "." before it's name.
+</p>
 
