@@ -39,7 +39,7 @@ You just need to run `main.py` file by using python-2. This will show all the fu
 $ Python2.7 main.py
 ```
 <br>
-<font size="0.3">
+
 Here the "google.png" image file is given for testing the script and it's working.
-</font>
+
 
