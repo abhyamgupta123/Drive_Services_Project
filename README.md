@@ -15,19 +15,19 @@ basic tools in this pakage includes:
   
 ## Instruction
 
--> First enable the Drive API to use the API function in your acoount.
+-> First enable the Drive API to use the API function in your acoount. <br>
 -> Head over to <a href="https://developers.google.com/drive/api/v3/quickstart/python">Python Quickstart</a> and enable the
-   Drive API by instructions given overthere.
--> Download the `credentials.json` in your working directory.
-
-<b>Now start using the tools by running `main.py`.</b>
-
+   Drive API by instructions given overthere.<br>
+-> Download the `credentials.json` in your working directory.<br>
+<br>
+<b>Now start using the tools by running `main.py`.</b><br>
+<br>
 For the first time you run the script it wil ask for permission of using Drive features. Just grant all the needed
-permission.
-Doing this will create a `.credentials` folder in your working directory. This contains all the information for associated with your current acoount of which you have gven the permission.
-<i>
+permission.<br>
+Doing this will create a `.credentials` folder in your working directory. This contains all the information for associated with your current acoount of which you have gven the permission.<br>
+<br><i>
 If you want to change the current Google ID to another just delete this `credentials` folder and `credentials.json` file. and paste the `credentials.json` file of another Google ID which you want.
-</i>
+</i><br>
 
 
 
