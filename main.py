@@ -154,7 +154,7 @@ try:
         print("Choose a number to perform your action.")
         print("")
         print(" 1. To Upload a Single File.")
-        print(" 2. To download a file using it's ID and location.")
+        print(" 2. To download a file using it's ID to a desired local location path.")
         print(" 3. To create a Empty Folder in Root Directory of Drive.")
         print(" 4. To upload a file in a given Folder by it's Drive Folder ID.")
         print(" 5. To Upload a whole folder by using it's complete path.")
