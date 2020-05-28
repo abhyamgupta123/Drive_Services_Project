@@ -1,14 +1,16 @@
+# -*- coding: utf-8 -*-
 from googleapiclient.http import MediaIoBaseDownload
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-import io, os
+import io
+import os
 import pickle
 import sys
 
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 
-def download(f_name, local_path):
+def dwnld(f_name, f_path):
 
     creds = None
     if os.path.exists('token.pickle'):
@@ -26,11 +28,14 @@ def download(f_name, local_path):
 
     folder_name = ''
     folder_id = ''
-    location = local_path
+    location = ''
+    # if len(sys.argv) > 2:
+    location = unicode(f_path, 'utf-8')
+    if location[-1] != '/':
+        location += '/'
 
     folder = service.files().list(
-            # q="name contains '{}' and mimeType='application/vnd.google-apps.folder'".format(sys.argv[1])
-            q="name contains '{}' and mimeType='application/vnd.google-apps.folder'".format(f_name),
+            q="name contains '{}' and mimeType='application/vnd.google-apps.folder'".format(unicode(f_name)),
             fields='files(id, name, parents)').execute()
 
     total = len(folder['files'])
@@ -93,7 +98,6 @@ def download_folder(service, folder_id, location, folder_name):
         file_id = item['id']
         filename = item['name']
         mime_type = item['mimeType']
-        print("")
         print file_id, filename, mime_type, '({}/{})'.format(current, total)
         if mime_type == 'application/vnd.google-apps.folder':
             download_folder(service, file_id, location, filename)
@@ -121,4 +125,4 @@ def download_file(service, file_id, location, filename, mime_type):
             sys.exit(1)
         print '\rDownload {}%.'.format(int(status.progress() * 100)),
         sys.stdout.flush()
-    print ' '
+    print ''
