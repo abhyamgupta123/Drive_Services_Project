@@ -211,10 +211,9 @@ while True:
 
     elif (int(num) == 5):
         local_f_path = raw_input("Enter path of your local folder: ")
-        local_f_name = raw_input("Enter name of your local folder: ")
-        l1=local_f_path.split('/')
+        local_f_name = raw_input("Enter name for your folder to be created in Drive: ")
         print("")
-        if (l1[-1]==local_f_name):
+        if (os.path.isdir(local_f_path)):
             whole_folder_upload(local_f_path, local_f_name)
             print("")
             print("UPLOADING DONE...!!")
