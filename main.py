@@ -27,6 +27,16 @@ credentials = authInst.getCredentials()
 http = credentials.authorize(httplib2.Http())
 drive_service = discovery.build('drive', 'v3', http=http)
 
+file_size_counter = 0.0
+
+
+def get_directory_size(Folder_path):
+    total_size = 0
+    for path, dirs, files in os.walk(Folder_path):
+        for f in files:
+            fp = os.path.join(path, f)
+            total_size += os.path.getsize(fp)
+    return total_size
 
 
 def listFiles(size):
@@ -77,7 +87,7 @@ def createFolder(name):
     print("")
     return file.get('id')
 
-def upload_file_in_folder(drive_folder_id,local_file_name,local_file_path):
+def upload_file_in_folder(drive_folder_id, local_file_name, local_file_path, percent_show):
     # drive_folder_id = folderid
     file_metadata = {
         'name': local_file_name,
@@ -89,7 +99,7 @@ def upload_file_in_folder(drive_folder_id,local_file_name,local_file_path):
     file = drive_service.files().create(body=file_metadata,
                                         media_body=media,
                                         fields='id').execute()
-    print ('File ID of {}: %s'.format(local_file_name) % file.get('id'))
+    print ('File ID of {}: {}  ({}% Completed...) '.format(local_file_name, file.get('id'), int(percent_show)))
     print("")
 
 def creating_folder_in_parent_folder(local_folder_name,parent_folder_id):
@@ -105,16 +115,21 @@ def creating_folder_in_parent_folder(local_folder_name,parent_folder_id):
     print("")
     return file.get('id')
 
-def upload_all_files_of_given_folder(local_folder_path, local_folder_name, drive_folder_id):
+def upload_all_files_of_given_folder(local_folder_path, local_folder_name, drive_folder_id, folder_size_calculated):
+
+    global file_size_counter
 
     for root, dirs, files in os.walk(local_folder_path):
         for single_file_name in files:
-            upload_file_in_folder(drive_folder_id, single_file_name, os.path.join(root, single_file_name))
+            current_size = os.path.getsize(os.path.join(root, single_file_name))
+            file_size_counter = file_size_counter + current_size
+            percent = (float(file_size_counter)/folder_size_calculated)*100
+            upload_file_in_folder(drive_folder_id, single_file_name, os.path.join(root, single_file_name), percent)
         break
 
-def recursive_upload(local_folder_path, local_folder_name, drive_folder_id):
+def recursive_upload(local_folder_path, local_folder_name, drive_folder_id, folder_size):
 
-    upload_all_files_of_given_folder(local_folder_path, local_folder_name, drive_folder_id)
+    upload_all_files_of_given_folder(local_folder_path, local_folder_name, drive_folder_id, folder_size)
 
     id_list={}
     for root, dirs, files in os.walk(local_folder_path):
@@ -125,12 +140,15 @@ def recursive_upload(local_folder_path, local_folder_name, drive_folder_id):
 
     for key, value in id_list.items():
         new_path = os.path.join(local_folder_path,key)
-        recursive_upload(new_path, key, value)
+        recursive_upload(new_path, key, value, folder_size)
 
 def whole_folder_upload(local_folder_path, local_folder_name):
 
+    local_folder_whole_size = get_directory_size(local_folder_path)
+    print("Total Folder size is {} Bytes.".format(local_folder_whole_size))
+    print("")
     root_id = createFolder(local_folder_name)
-    recursive_upload(local_folder_path, local_folder_name, root_id)
+    recursive_upload(local_folder_path, local_folder_name, root_id, local_folder_whole_size)
 
 def searchFile(size,query):
 
@@ -197,17 +215,17 @@ while True:
 
     elif (int(num) == 4):
         d_f_id = raw_input("Enter ID of Google Drive Folder: ")
-        l_f_name = raw_input("Enter name of file with it's format (like .pdf, .txt, .jpg etc.): ")
-        l_f_path = raw_input("Enter path of local file: ")
+        l_f_path = raw_input("Enter path of that local file: ")
         l1=l_f_path.split('/')
         print("")
-        if (l1[-1]==l_f_name):
-            upload_file_in_folder(d_f_id, l_f_name, l_file_path)
+        if (os.path.isfile(l_f_path)):
+            l_f_name = l1[-1]
+            upload_file_in_folder(d_f_id, l_f_name, l_f_path, '100')
             print("")
             print("File created Successfully")
             print("")
         else:
-            print("Enter the correcr folder name that is present at your given path.")
+            print("Enter the correct file path or Folder ID...")
 
     elif (int(num) == 5):
         local_f_path = raw_input("Enter path of your local folder: ")
@@ -217,6 +235,7 @@ while True:
             whole_folder_upload(local_f_path, local_f_name)
             print("")
             print("UPLOADING DONE...!!")
+            file_size_counter = 0
             print("")
         else:
             print("Enter the correcr folder name that is present at your given path.")
