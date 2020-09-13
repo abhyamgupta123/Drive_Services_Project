@@ -20,6 +20,12 @@ basic tools in this pakage includes:
    Drive API by instructions given overthere.<br>
 -> Download the `credentials.json` in your working directory.<br><br>
 
+>You can also install all the required libraries by running the shell file `install_libraries.sh`
+```
+$ chmod +x install_libraries.sh
+$ ./install_libraries.sh
+```
+
 **Now start using the tools by running `main.py`.**<br><br>
 
 For the first time you run the script it wil ask for permission of using Drive features. Just grant all the needed
@@ -43,5 +49,3 @@ $ Python2.7 main.py
 <br>
 
 Here the "google.png" image file is given for testing the script and it's working.
-
-
