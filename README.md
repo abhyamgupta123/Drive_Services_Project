@@ -22,9 +22,9 @@ basic tools in this pakage includes:
 
 >You can also install all the required libraries by running the shell file `install_libraries.sh`
 >```
- $ chmod +x install_libraries.sh
- $ ./install_libraries.sh
- ```
+>$ chmod +x install_libraries.sh
+>$ ./install_libraries.sh
+>```
 
 **Now start using the tools by running `main.py`.**<br><br>
 
