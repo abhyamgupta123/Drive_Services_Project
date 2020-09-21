@@ -11,3 +11,4 @@ echo "Python Libraries are :--
 
 pip2 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 pip2 install --upgrade oauth2client
+pip2 install httplib2==0.05.0
